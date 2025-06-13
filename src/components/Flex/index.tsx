@@ -1,0 +1,16 @@
+import { Flex as RadixFlex } from '@radix-ui/themes'
+import type { FlexProps } from './types'
+
+export default function Flex(props: FlexProps) {
+
+	return (
+		<RadixFlex {...props} />
+	)
+}
+
+Flex.displayName = 'Flex'
+
+export {
+	Flex
+}
+

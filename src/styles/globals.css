@@ -1,0 +1,23 @@
+/* @import "dark.css"; */
+/* @import "fonts.css"; */
+/* @import "light.css"; */
+
+@media (prefers-color-scheme: dark) {
+	html {
+		color-scheme: dark;
+	}
+}
+
+body {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+	-webkit-user-select: none;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	user-select: none;
+}
