@@ -52,9 +52,11 @@ export default function Page() {
 					</Flex>
 					<Separator size={'4'} />
 					<Flex justify={'between'} direction={'column'} gap={'4'}>
-						<Text>
-							{`${contributions?.contributionsCount ?? 0} contributions in the last year`}
-						</Text>
+						<Skeleton loading={contributions === undefined}>
+							<Text>
+								{`${contributions?.contributionsCount ?? '9,999'} contributions in the last year`}
+							</Text>
+						</Skeleton>
 						<Skeleton loading={contributions === undefined}>
 							<ContributionsChart data={contributions} />
 						</Skeleton>
