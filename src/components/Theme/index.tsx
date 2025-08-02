@@ -17,7 +17,7 @@ function Theme({ children }: ThemeProps) {
 
 	return (
 		<RadixTheme
-			accentColor={'jade'}
+			accentColor={'green'}
 			appearance={theme.scheme}
 			grayColor={'auto'}
 		>
