@@ -1,0 +1,59 @@
+{
+	"name": "Geison Oriani",
+	"avatar_url": "https://0.gravatar.com/avatar/406f8c386e11626f2feefdb195b43cf3cf09b159fac486b4d1fae8d6daa014b0",
+	"description": "Full-Stack Developer Fueling Innovation with Purpose and Passion",
+	"birth_date": "2001-06-01",
+	"interests": [],
+	"strengths": [
+		{
+			"label": "TypeScript",
+			"color": "blue"
+		},
+		{
+			"label": "JavaScript",
+			"color": "yellow"
+		},
+		{
+			"label": "React",
+			"color": "sky"
+		},
+		{
+			"label": "React Native",
+			"color": "purple"
+		},
+		{
+			"label": "Nest.js",
+			"color": "red"
+		},
+		{
+			"label": "Next.js",
+			"color": "gray"
+		},
+		{
+			"label": "Node.js",
+			"color": "green"
+		}
+	],
+	"weaknesses": [
+		{
+			"label": "Stab",
+			"color": "gray"
+		},
+		{
+			"label": "Gunshot",
+			"color": "red"
+		},
+		{
+			"label": "Electric shock",
+			"color": "yellow"
+		},
+		{
+			"label": "Python",
+			"color": "blue"
+		},
+		{
+			"label": "Edulib",
+			"color": "red"
+		}
+	]
+}
