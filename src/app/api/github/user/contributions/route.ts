@@ -4,8 +4,8 @@ import { Contribution, GitHubContribution } from './types'
 
 export async function GET() {
 
-	const data = await github().post<GitHubContribution>('user', {
-		body: JSON.stringify({
+	const data = await github().post<GitHubContribution>('graphql', {
+		body: {
 			query: `{
 				viewer {
 					contributionsCollection {
@@ -21,7 +21,7 @@ export async function GET() {
 					}
 				}
 			}`
-		})
+		}
 	})
 
 	const contributionsCount = data.data.viewer.contributionsCollection.contributionCalendar.totalContributions.toLocaleString('en-US')
