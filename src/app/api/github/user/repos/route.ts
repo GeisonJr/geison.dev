@@ -4,7 +4,11 @@ import type { GitHubRepo, Repo } from './types'
 
 export async function GET() {
 
-	const data = await github().get<GitHubRepo[]>('user/repos')
+	const data = await github().get<GitHubRepo[]>('user/repos', {
+		query: {
+			per_page: '100'
+		}
+	})
 
 	const filteredRepos = data
 		.filter(repo => !!repo.topics.includes('portfolio'))
@@ -123,3 +127,4 @@ export async function GET() {
 
 	return NextResponse.json(response)
 }
+
