@@ -1,4 +1,5 @@
 import { Theme } from '@/components'
+import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
@@ -35,6 +36,7 @@ export default function Layout({ children, discord, gravatar, github, wakatime }
 					{wakatime}
 					{discord}
 				</Theme>
+				<Analytics />
 				<SpeedInsights />
 			</body>
 		</html>
