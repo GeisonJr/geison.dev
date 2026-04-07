@@ -1,26 +1,43 @@
-# Production
+# Project
+/node_modules
+
+# Environment
+.env.development.local
+.env.production.local
+.env.test.local
+.env.local
+.env
+
+# Log
+*.log
+/log
+/logs
+
+# Output
 /build
 /dist
 /out
 
-# NodeJS
-/node_modules
+# OS
+.DS_Store
+Thumbs.db
 
-# ASDF
-.tool-versions
+# Private
+*.key
+*.pem
+/cert
+/certs
+/private
 
-# Typescript
+# Temporary
+*.temp
+*.tmp
+/.temp
+/.tmp
+
+# TypeScript
 *.tsbuildinfo
 
-# NextJS
+# Next.js
+next-env.d.ts
 /.next
-
-# Vercel
-/.vercel
-
-# Environment
-# .env*
-.env*.local
-
-# macOS
-.DS_Store
