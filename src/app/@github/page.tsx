@@ -3,7 +3,7 @@
 import { Badge, Card, Container, Flex, If, Link, Map, Masonry, Separator, Skeleton, Text } from '@/components'
 import { api } from '@/helpers'
 import { StarFilledIcon } from '@radix-ui/react-icons'
-import { ScrollArea, Tooltip } from '@radix-ui/themes'
+import { Tooltip } from '@radix-ui/themes'
 import { Fragment } from 'react'
 import useSWR from 'swr'
 import { Contribution } from '../api/github/user/contributions/types'
@@ -112,14 +112,17 @@ function ContributionsChart({ data }: { data?: Contribution }) {
 	}, 0) ?? 0
 
 	return (
-		<ScrollArea scrollbars={'horizontal'} type={'hover'}>
-			<Flex direction={'row'} gap={'1'} pb={'4'}>
-				<Map data={data?.weeks ?? []}>
+		<Flex
+			direction={'row'}
+			gap={'1'}
+			style={{ width: '100%' }}
+		>
+			<Map data={data?.weeks ?? []}>
 					{(week) => {
 						const { contributions } = week
 
 						return (
-							<Flex direction={'column'} gap={'1'}>
+							<Flex direction={'column'} gap={'1'} style={{ flex: 1, minWidth: 0 }}>
 								<Map data={contributions}>
 									{(contribution) => {
 										const backgroundColor = prepareColorIntensity(contribution.count, max)
@@ -128,13 +131,11 @@ function ContributionsChart({ data }: { data?: Contribution }) {
 											<Tooltip content={`${contribution.count} contributions on ${contribution.date}`}>
 												<Flex
 													key={contribution.date}
-													align={'center'}
-													height={'18px'}
-													justify={'center'}
-													width={'18px'}
 													style={{
 														backgroundColor,
-														borderRadius: '2px'
+														borderRadius: '2px',
+														width: '100%',
+														aspectRatio: '1',
 													}}
 												/>
 											</Tooltip>
@@ -145,8 +146,7 @@ function ContributionsChart({ data }: { data?: Contribution }) {
 						)
 					}}
 				</Map>
-			</Flex>
-		</ScrollArea>
+		</Flex>
 	)
 }
 
