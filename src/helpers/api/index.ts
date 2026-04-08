@@ -118,6 +118,7 @@ class API {
 
 		const response = await fetch(this.url!, {
 			...rest,
+			cache: 'no-store',
 			headers: this.headers!,
 			body: this.body!
 		})
@@ -182,71 +183,9 @@ class API {
 
 function api() {
 	const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000/api/'
-	if (!API_URL) {
-		throw new Error('The env "NEXT_PUBLIC_API_URL" is not set')
-	}
 
 	return new API(API_URL, {
 		headers: {
-			'Content-Type': 'application/json'
-		}
-	})
-}
-
-function discord() {
-	const API_URL = 'https://discord.com/api/v10/'
-	const API_KEY = process.env.DISCORD_API_KEY ?? ''
-	if (!API_KEY) {
-		throw new Error('The env "DISCORD_API_KEY" is not set')
-	}
-
-	return new API(API_URL, {
-		headers: {
-			'Authorization': `Bot ${API_KEY}`,
-			'Content-Type': 'application/json'
-		}
-	})
-}
-
-function github() {
-	const API_URL = 'https://api.github.com/'
-	const API_KEY = process.env.GITHUB_API_KEY ?? ''
-	if (!API_KEY) {
-		throw new Error('The env "GITHUB_API_KEY" is not set')
-	}
-
-	return new API(API_URL, {
-		headers: {
-			'Authorization': `Bearer ${API_KEY}`
-		}
-	})
-}
-
-function gravatar() {
-	const API_URL = 'https://api.gravatar.com/v3/'
-	const API_KEY = process.env.GRAVATAR_API_KEY ?? ''
-	if (!API_KEY) {
-		throw new Error('The env "GRAVATAR_API_KEY" is not set')
-	}
-
-	return new API(API_URL, {
-		headers: {
-			'Authorization': `Bearer ${API_KEY}`,
-			'Content-Type': 'application/json'
-		}
-	})
-}
-
-function wakatime() {
-	const API_URL = 'https://api.wakatime.com/api/v1/'
-	const API_KEY = process.env.WAKATIME_API_KEY ?? ''
-	if (!API_KEY) {
-		throw new Error('The env "WAKATIME_API_KEY" is not set')
-	}
-
-	return new API(API_URL, {
-		headers: {
-			'Authorization': `Basic ${API_KEY}`,
 			'Content-Type': 'application/json'
 		}
 	})
@@ -254,10 +193,5 @@ function wakatime() {
 
 export {
 	API,
-	api,
-	discord,
-	github,
-	gravatar,
-	wakatime
+	api
 }
-

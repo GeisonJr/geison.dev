@@ -22,11 +22,10 @@ export interface GitHubUser {
 	company: string
 	blog: string
 	location: string
-	email: string
+	email: string | null
 	hireable: boolean
 	bio: string
-	twitter_username: null
-	notification_email: string
+	twitter_username: string | null
 	public_repos: number
 	public_gists: number
 	followers: number
