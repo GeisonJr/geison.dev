@@ -25,7 +25,7 @@ export default function Page() {
 				}}
 			>
 				<Flex direction={'column'} gap={'4'}>
-					<Flex gap={'4'} justify={'between'}>
+					<Flex direction={{ initial: 'column', sm: 'row' }} gap={'4'} justify={'between'}>
 						<Flex align={'center'} gap={'4'}>
 							<Text size={'6'} weight={'bold'}>
 								{'Discord'}
@@ -115,4 +115,3 @@ function WidgetMember({ data }: { data?: Member }) {
 		</Flex>
 	)
 }
-

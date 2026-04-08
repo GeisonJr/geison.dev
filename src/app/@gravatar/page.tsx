@@ -52,9 +52,9 @@ export default function Page() {
 						</Flex>
 					</Flex>
 					<Separator size={'4'} />
-					<Flex gap={'4'} justify={'between'}>
-						<Flex flexBasis={'100%'}>
-							<DataList.Root size={'3'}>
+					<Flex direction={{ initial: 'column', sm: 'row' }} gap={'4'} justify={'between'}>
+						<Flex flexBasis={'100%'} style={{ minWidth: 0 }}>
+							<DataList.Root size={'3'} style={{ width: '100%' }}>
 								<DataList.Item>
 									<DataList.Label>
 										{'Pronunciation'}
@@ -97,7 +97,7 @@ export default function Page() {
 								</DataList.Item>
 							</DataList.Root>
 						</Flex>
-						<Separator orientation={'vertical'} size={'4'} />
+						<Separator orientation={{ initial: 'horizontal', sm: 'vertical' }} size={'4'} />
 						<Flex
 							direction={'column'}
 							flexBasis={'100%'}

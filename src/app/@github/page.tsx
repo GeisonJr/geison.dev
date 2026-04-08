@@ -30,7 +30,7 @@ export default function Page() {
 				}}
 			>
 				<Flex direction={'column'} gap={'4'}>
-					<Flex justify={'between'}>
+					<Flex direction={{ initial: 'column', sm: 'row' }} justify={'between'} gap={'2'}>
 						<Flex align={'center'} gap={'4'}>
 							<Text size={'6'} weight={'bold'}>
 								{'GitHub'}
@@ -62,7 +62,7 @@ export default function Page() {
 						</Skeleton>
 					</Flex>
 					<Separator size={'4'} />
-					<Flex align={'center'} gap={'4'} justify={'between'}>
+					<Flex align={{ initial: 'start', sm: 'center' }} direction={{ initial: 'column', sm: 'row' }} gap={'4'} justify={'between'}>
 						<Text size={'4'}>
 							{'Repositories'}
 						</Text>
@@ -72,7 +72,7 @@ export default function Page() {
 							</Text>
 						</Skeleton>
 					</Flex>
-					<Masonry gap={'2'} minWidth={'300px'}>
+					<Masonry gap={'2'} minWidth={'240px'}>
 						<If condition={repos === undefined}>
 							<RepositoryCard />
 							<RepositoryCard />
@@ -118,34 +118,34 @@ function ContributionsChart({ data }: { data?: Contribution }) {
 			style={{ width: '100%' }}
 		>
 			<Map data={data?.weeks ?? []}>
-					{(week) => {
-						const { contributions } = week
+				{(week) => {
+					const { contributions } = week
 
-						return (
-							<Flex direction={'column'} gap={'1'} style={{ flex: 1, minWidth: 0 }}>
-								<Map data={contributions}>
-									{(contribution) => {
-										const backgroundColor = prepareColorIntensity(contribution.count, max)
+					return (
+						<Flex direction={'column'} gap={'1'} style={{ flex: 1, minWidth: 0 }}>
+							<Map data={contributions}>
+								{(contribution) => {
+									const backgroundColor = prepareColorIntensity(contribution.count, max)
 
-										return (
-											<Tooltip content={`${contribution.count} contributions on ${contribution.date}`}>
-												<Flex
-													key={contribution.date}
-													style={{
-														backgroundColor,
-														borderRadius: '2px',
-														width: '100%',
-														aspectRatio: '1',
-													}}
-												/>
-											</Tooltip>
-										)
-									}}
-								</Map>
-							</Flex>
-						)
-					}}
-				</Map>
+									return (
+										<Tooltip content={`${contribution.count} contributions on ${contribution.date}`}>
+											<Flex
+												key={contribution.date}
+												style={{
+													backgroundColor,
+													borderRadius: '2px',
+													width: '100%',
+													aspectRatio: '1',
+												}}
+											/>
+										</Tooltip>
+									)
+								}}
+							</Map>
+						</Flex>
+					)
+				}}
+			</Map>
 		</Flex>
 	)
 }
@@ -237,4 +237,3 @@ function RepositoryCard({ data }: { data?: Repo }) {
 		</Card>
 	)
 }
-

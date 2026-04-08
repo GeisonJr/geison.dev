@@ -25,7 +25,7 @@ export default function Page() {
 				}}
 			>
 				<Flex direction={'column'} gap={'4'}>
-					<Flex justify={'between'}>
+					<Flex direction={{ initial: 'column', sm: 'row' }} justify={'between'} gap={'2'}>
 						<Flex align={'center'} gap={'4'}>
 							<Text size={'6'} weight={'bold'}>
 								{'WakaTime'}
@@ -46,7 +46,7 @@ export default function Page() {
 						</Flex>
 					</Flex>
 					<Separator size={'4'} />
-					<Flex align={'center'} gap={'4'} justify={'between'}>
+					<Flex direction={{ initial: 'column', sm: 'row' }} align={{ sm: 'center' }} gap={'4'} justify={'between'}>
 						<Skeleton loading={last_year?.range === undefined}>
 							<Text size={'4'}>
 								{last_year?.range ?? 'Loading...'}
