@@ -1,5 +1,6 @@
 # Project
 /node_modules
+README.md
 
 # Environment
 .env.development.local
@@ -7,8 +8,6 @@
 .env.test.local
 .env.local
 .env
-src/app/api/**/data.json
-!src/app/api/me/data.json
 
 # Log
 *.log
@@ -24,13 +23,6 @@ src/app/api/**/data.json
 .DS_Store
 Thumbs.db
 
-# Private
-*.key
-*.pem
-/cert
-/certs
-/private
-
 # Temporary
 *.temp
 *.tmp
@@ -41,5 +33,12 @@ Thumbs.db
 *.tsbuildinfo
 
 # Next.js
-next-env.d.ts
 /.next
+
+# Git
+/.git
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
