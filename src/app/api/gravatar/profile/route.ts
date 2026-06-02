@@ -22,7 +22,7 @@ export async function GET() {
 		accounts.sort((a, b) => a.label.localeCompare(b.label))
 
 		const languages: Language[] = []
-		for (const language of data.languages) {
+		for (const language of data.languages ?? []) {
 			languages.push({
 				label: language.name
 			})
@@ -30,7 +30,7 @@ export async function GET() {
 		languages.sort((a, b) => a.label.localeCompare(b.label))
 
 		const links: Link[] = []
-		for (const link of data.links) {
+		for (const link of data.links ?? []) {
 			links.push({
 				label: link.label,
 				url: link.url
