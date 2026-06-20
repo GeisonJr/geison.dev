@@ -1,0 +1,11 @@
+# Security policy and how to report a vulnerability (RFC 9116)
+# https://www.rfc-editor.org/rfc/rfc9116
+#
+# Canonical location: https://www.geison.dev/.well-known/security.txt
+
+Contact: mailto:security@geison.dev
+Expires: 2027-06-20T00:00:00.000Z
+Acknowledgments: https://www.geison.dev/security/acknowledgments.html
+Policy: https://www.geison.dev/security/policy.html
+Preferred-Languages: en, pt-BR
+Canonical: https://www.geison.dev/.well-known/security.txt

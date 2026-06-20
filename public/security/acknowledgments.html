@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1"
+	/>
+	<title>Security Acknowledgments — geison.dev</title>
+	<meta
+		name="robots"
+		content="index, follow"
+	/>
+	<style>
+		:root {
+			color-scheme: light dark;
+		}
+
+		body {
+			font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+			max-width: 760px;
+			margin: 3rem auto;
+			padding: 0 1.25rem;
+		}
+
+		h1 {
+			font-size: 1.75rem;
+			line-height: 1.2;
+		}
+
+		h2 {
+			margin-top: 2.25rem;
+			font-size: 1.2rem;
+		}
+
+		code {
+			background: rgba(127, 127, 127, .18);
+			padding: .1em .35em;
+			border-radius: 4px;
+		}
+
+		a {
+			color: #2563eb;
+		}
+
+		hr {
+			border: none;
+			border-top: 1px solid rgba(127, 127, 127, .25);
+			margin: 2.5rem 0;
+		}
+
+		.muted {
+			color: #6b7280;
+			font-size: .9rem;
+		}
+
+		table {
+			border-collapse: collapse;
+			width: 100%;
+			margin-top: 1.5rem;
+		}
+
+		th,
+		td {
+			text-align: left;
+			padding: .6rem .5rem;
+			border-bottom: 1px solid rgba(127, 127, 127, .25);
+		}
+
+		th {
+			font-size: .8rem;
+			text-transform: uppercase;
+			letter-spacing: .04em;
+			color: #6b7280;
+		}
+
+		.empty {
+			margin-top: 1.5rem;
+			padding: 1.25rem;
+			border: 1px dashed rgba(127, 127, 127, .4);
+			border-radius: 8px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Security Hall of Fame</h1>
+	<p class="muted">
+		Last updated: June 20, 2026
+	</p>
+	<p>
+		Thanks to the people who responsibly reported vulnerabilities, followed my
+		<a href="/security/policy.html">disclosure policy</a>, and helped make
+		<code>geison.dev</code> safer.
+	</p>
+
+	<h2>Researchers</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Researcher</th>
+				<th>Contribution</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!--
+			<tr>
+				<td>2026-07-01</td>
+				<td>Jane Doe (@handle)</td>
+				<td>Reported a reflected XSS on /contact.</td>
+			</tr>
+			-->
+		</tbody>
+	</table>
+
+	<div class="empty">
+		No entries yet. Be the first to report — see how in
+		<a href="/.well-known/security.txt">security.txt</a>.
+	</div>
+
+	<hr />
+	<p class="muted">
+		Referenced by the <code>Acknowledgments</code> field of my
+		<a href="/.well-known/security.txt">security.txt</a> (RFC 9116).
+	</p>
+</body>
+
+</html>

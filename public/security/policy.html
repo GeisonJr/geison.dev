@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1"
+	/>
+	<title>Vulnerability Disclosure Policy — geison.dev</title>
+	<meta
+		name="robots"
+		content="index, follow"
+	/>
+	<style>
+		:root {
+			color-scheme: light dark;
+		}
+
+		body {
+			font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+			max-width: 760px;
+			margin: 3rem auto;
+			padding: 0 1.25rem;
+		}
+
+		h1 {
+			font-size: 1.75rem;
+			line-height: 1.2;
+		}
+
+		h2 {
+			margin-top: 2.25rem;
+			font-size: 1.2rem;
+		}
+
+		code {
+			background: rgba(127, 127, 127, .18);
+			padding: .1em .35em;
+			border-radius: 4px;
+		}
+
+		a {
+			color: #2563eb;
+		}
+
+		hr {
+			border: none;
+			border-top: 1px solid rgba(127, 127, 127, .25);
+			margin: 2.5rem 0;
+		}
+
+		.muted {
+			color: #6b7280;
+			font-size: .9rem;
+		}
+
+		ul {
+			padding-left: 1.25rem;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Vulnerability Disclosure Policy</h1>
+	<p class="muted">
+		Last updated: June 20, 2026
+	</p>
+	<p>
+		I value the work of security researchers who help keep
+		<code>geison.dev</code> and my projects safe. This page explains how to
+		report a vulnerability responsibly.
+	</p>
+
+	<h2>How to report</h2>
+	<p>
+		Email your findings to <a href="mailto:security@geison.dev">security@geison.dev</a>.
+	</p>
+	<p>Where possible, please include:</p>
+	<ul>
+		<li>A clear description of the issue and its potential impact;</li>
+		<li>Steps to reproduce (proof of concept, requests, screenshots);</li>
+		<li>The affected URLs, parameters, or components;</li>
+		<li>How you'd like to be credited (or if you prefer to stay anonymous).</li>
+	</ul>
+
+	<h2>What you can expect from me</h2>
+	<ul>
+		<li>I acknowledge reports within <strong>3 business days</strong>;</li>
+		<li>I keep you updated on remediation progress;</li>
+		<li>I won't pursue legal action for good-faith research that follows this
+			policy (<em>safe harbor</em>);</li>
+		<li>With your permission, I'll credit you on the
+			<a href="/security/acknowledgments.html">acknowledgments page</a>.
+		</li>
+	</ul>
+
+	<h2>Guidelines (please do)</h2>
+	<ul>
+		<li>Give me reasonable time to fix the issue before any public disclosure;</li>
+		<li>Only test against accounts and data you own;</li>
+		<li>Stop as soon as you encounter third-party data, and let me know.</li>
+	</ul>
+
+	<h2>Out of scope (please don't)</h2>
+	<ul>
+		<li>Denial-of-service (DoS/DDoS) or load testing;</li>
+		<li>Social engineering or phishing;</li>
+		<li>Accessing, modifying, or exfiltrating third-party data;</li>
+		<li>Spam, mass brute-forcing, or service degradation.</li>
+	</ul>
+
+	<hr />
+	<p class="muted">
+		Referenced by the <code>Policy</code> field of my
+		<a href="/.well-known/security.txt">security.txt</a> (RFC 9116).
+	</p>
+</body>
+
+</html>
