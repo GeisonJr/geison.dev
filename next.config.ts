@@ -11,6 +11,7 @@ function safeSrc(key: string, values: Array<boolean | string>): string {
 			value = value.trim()
 
 			const quotedKeys = [
+				'none',
 				'self',
 				'unsafe-eval',
 				'unsafe-inline'
@@ -27,57 +28,55 @@ function safeSrc(key: string, values: Array<boolean | string>): string {
 	return `${key} ${src}`
 }
 
-const defaultSrc = safeSrc('default-src', [
-	'self'
-])
-
-const connectSrc = safeSrc('connect-src', [
-	'self',
-	isDev && 'ws:',
-	// Cloudflare (o proxy ainda não está sendo utilizado)
-	// !isDev && 'https://cloudflareinsights.com'
-])
-
-const fontSrc = safeSrc('font-src', [
-	'self'
-])
-
-const imgSrc = safeSrc('img-src', [
-	'self',
-	'data:',
-	// Discord
-	'https://cdn.discordapp.com',
-	// Gravatar
-	'https://gravatar.com',
-	'https://secure.gravatar.com'
-])
-
-const scriptSrc = safeSrc('script-src', [
-	'self',
-	'unsafe-inline',
-	isDev && 'unsafe-eval',
-	// Cloudflare (o proxy ainda não está sendo utilizado)
-	// !isDev && 'https://static.cloudflareinsights.com'
-])
-
-const styleSrc = safeSrc('style-src', [
-	'self',
-	'unsafe-inline'
-])
-
 const contentSecurityPolicy = [
-	defaultSrc,
-	connectSrc,
-	fontSrc,
-	imgSrc,
-	scriptSrc,
-	styleSrc,
-	`frame-src 'none'`,
-	`object-src 'none'`,
-	`base-uri 'self'`,
-	`form-action 'self'`,
-	`frame-ancestors 'none'`,
-	`upgrade-insecure-requests`,
+	safeSrc('default-src', [
+		'self'
+	]),
+	safeSrc('connect-src', [
+		'self',
+		isDev && 'ws:',
+		// Cloudflare (o proxy ainda não está sendo utilizado)
+		// !isDev && 'https://cloudflareinsights.com'
+	]),
+	safeSrc('font-src', [
+		'self'
+	]),
+	safeSrc('frame-src', [
+		'none'
+	]),
+	safeSrc('img-src', [
+		'self',
+		'data:',
+		// Discord
+		'https://cdn.discordapp.com',
+		// Gravatar
+		'https://gravatar.com',
+		'https://secure.gravatar.com'
+	]),
+	safeSrc('object-src', [
+		'none'
+	]),
+	safeSrc('script-src', [
+		'self',
+		'unsafe-inline',
+		isDev && 'unsafe-eval',
+		// Cloudflare (o proxy ainda não está sendo utilizado)
+		// !isDev && 'https://static.cloudflareinsights.com'
+	]),
+	safeSrc('style-src', [
+		'self',
+		'unsafe-inline'
+	]),
+	safeSrc('base-uri', [
+		'self'
+	]),
+	safeSrc('form-action', [
+		'self'
+	]),
+	safeSrc('frame-ancestors', [
+		'none'
+	]),
+	'upgrade-insecure-requests'
 ].join('; ')
 
 const nextConfig: NextConfig = {
