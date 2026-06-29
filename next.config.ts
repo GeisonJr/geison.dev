@@ -90,7 +90,7 @@ const nextConfig: NextConfig = {
 	},
 	env: {
 		// URLs
-		API_URL: process.env.API_URL,
+		API_URL: process.env.API_URL
 	},
 	eslint: {
 		ignoreDuringBuilds: true
@@ -109,7 +109,7 @@ const nextConfig: NextConfig = {
 				value: contentSecurityPolicy
 			}, {
 				key: 'Permissions-Policy',
-				value: 'geolocation=(), camera=(), microphone=()'
+				value: 'camera=(), geolocation=(), microphone=()'
 			}, {
 				key: 'Referrer-Policy',
 				value: 'no-referrer'
