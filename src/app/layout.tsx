@@ -1,8 +1,10 @@
 import { Theme } from '@/components'
+import { baseUrl } from '@/helpers'
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 
 export const metadata: Metadata = {
+	metadataBase: baseUrl,
 	title: 'Geison Oriani',
 	description: 'Software Engineer'
 }

@@ -1,0 +1,7 @@
+# robots.txt for geison.dev
+# Allow every crawler to index the whole site.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.geison.dev/sitemap.xml
