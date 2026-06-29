@@ -2,7 +2,7 @@ import type { NextConfig } from 'next'
 
 const isDev = process.env.NODE_ENV === 'development'
 
-function safeSrc(key: string, values: Array<boolean | string>): string {
+function safeCSP(key: string, values: Array<boolean | string>): string {
 	const src = values
 		.filter((value): value is string => {
 			return typeof value === 'string'
@@ -29,22 +29,22 @@ function safeSrc(key: string, values: Array<boolean | string>): string {
 }
 
 const contentSecurityPolicy = [
-	safeSrc('default-src', [
+	safeCSP('default-src', [
 		'self'
 	]),
-	safeSrc('connect-src', [
+	safeCSP('connect-src', [
 		'self',
 		isDev && 'ws:',
 		// Cloudflare
 		!isDev && 'https://cloudflareinsights.com'
 	]),
-	safeSrc('font-src', [
+	safeCSP('font-src', [
 		'self'
 	]),
-	safeSrc('frame-src', [
+	safeCSP('frame-src', [
 		'none'
 	]),
-	safeSrc('img-src', [
+	safeCSP('img-src', [
 		'self',
 		'data:',
 		// Discord
@@ -53,30 +53,30 @@ const contentSecurityPolicy = [
 		'https://gravatar.com',
 		'https://secure.gravatar.com'
 	]),
-	safeSrc('object-src', [
+	safeCSP('object-src', [
 		'none'
 	]),
-	safeSrc('script-src', [
+	safeCSP('script-src', [
 		'self',
 		'unsafe-inline',
 		isDev && 'unsafe-eval',
 		// Cloudflare
 		!isDev && 'https://static.cloudflareinsights.com'
 	]),
-	safeSrc('style-src', [
+	safeCSP('style-src', [
 		'self',
 		'unsafe-inline'
 	]),
-	safeSrc('worker-src', [
+	safeCSP('worker-src', [
 		'self'
 	]),
-	safeSrc('base-uri', [
+	safeCSP('base-uri', [
 		'self'
 	]),
-	safeSrc('form-action', [
+	safeCSP('form-action', [
 		'self'
 	]),
-	safeSrc('frame-ancestors', [
+	safeCSP('frame-ancestors', [
 		'none'
 	]),
 	'upgrade-insecure-requests'
