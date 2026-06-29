@@ -35,8 +35,8 @@ const contentSecurityPolicy = [
 	safeSrc('connect-src', [
 		'self',
 		isDev && 'ws:',
-		// Cloudflare (o proxy ainda não está sendo utilizado)
-		// !isDev && 'https://cloudflareinsights.com'
+		// Cloudflare
+		!isDev && 'https://cloudflareinsights.com'
 	]),
 	safeSrc('font-src', [
 		'self'
@@ -60,8 +60,8 @@ const contentSecurityPolicy = [
 		'self',
 		'unsafe-inline',
 		isDev && 'unsafe-eval',
-		// Cloudflare (o proxy ainda não está sendo utilizado)
-		// !isDev && 'https://static.cloudflareinsights.com'
+		// Cloudflare
+		!isDev && 'https://static.cloudflareinsights.com'
 	]),
 	safeSrc('style-src', [
 		'self',
