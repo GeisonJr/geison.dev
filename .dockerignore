@@ -20,6 +20,8 @@ coverage
 # Web (Next.js)
 .next
 next-env.d.ts
+src/app/api/**/data.json
+!src/app/api/me/data.json
 
 # Secrets
 *.key
