@@ -13,8 +13,8 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ARG API_URL
 ENV API_URL=$API_URL
 
-COPY package.json        ./
-COPY pnpm-lock.yaml      ./
+COPY package.json   ./
+COPY pnpm-lock.yaml ./
 
 RUN pnpm install --frozen-lockfile
 
@@ -26,7 +26,6 @@ RUN pnpm build
 FROM base AS release
 WORKDIR /app
 
-# Set the user to use when running this image
 RUN addgroup --system --gid 1001 nodejs && \
     adduser  --system --uid 1001 nextjs --ingroup nodejs
 

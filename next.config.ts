@@ -1,8 +1,8 @@
-import type { NextConfig } from "next"
+import type { NextConfig } from 'next'
 
 const isDev = process.env.NODE_ENV === 'development'
 
-const cspHeader = [
+const contentSecurityPolicy = [
 	`default-src 'self'`,
 	isDev
 		? `connect-src 'self' ws:`
@@ -34,33 +34,25 @@ const nextConfig: NextConfig = {
 		ignoreDuringBuilds: true
 	},
 	async headers() {
-		return [
-			{
-				source: '/(.*)',
-				headers: [
-					{
-						key: 'X-Content-Type-Options',
-						value: 'nosniff'
-					},
-					{
-						key: 'X-Frame-Options',
-						value: 'DENY'
-					},
-					{
-						key: 'Content-Security-Policy',
-						value: cspHeader
-					},
-					{
-						key: 'Permissions-Policy',
-						value: 'geolocation=(), camera=(), microphone=()'
-					},
-					{
-						key: 'Referrer-Policy',
-						value: 'no-referrer'
-					}
-				]
-			}
-		]
+		return [{
+			source: '/(.*)',
+			headers: [{
+				key: 'X-Content-Type-Options',
+				value: 'nosniff'
+			}, {
+				key: 'X-Frame-Options',
+				value: 'DENY'
+			}, {
+				key: 'Content-Security-Policy',
+				value: contentSecurityPolicy
+			}, {
+				key: 'Permissions-Policy',
+				value: 'geolocation=(), camera=(), microphone=()'
+			}, {
+				key: 'Referrer-Policy',
+				value: 'no-referrer'
+			}]
+		}]
 	},
 	output: 'standalone'
 }
