@@ -1,44 +1,44 @@
-# Project
-/node_modules
-README.md
+# Git
+.git
+
+# Node (JavaScript/TypeScript)
+*.tsbuildinfo
+node_modules
 
 # Environment
-.env.development.local
-.env.production.local
-.env.test.local
-.env.local
 .env
+.env.*
 
-# Log
+# Build
+build
+dist
+out
+
+# Test
+coverage
+
+# Web (Next.js)
+.next
+next-env.d.ts
+
+# Secrets
+*.key
+*.local.json
+*.pem
+cert
+certs
+private
+
+# Logs
 *.log
-/log
-/logs
-
-# Output
-/build
-/dist
-/out
-
-# OS
-.DS_Store
-Thumbs.db
+logs
 
 # Temporary
 *.temp
 *.tmp
-/.temp
-/.tmp
+.temp
+.tmp
 
-# TypeScript
-*.tsbuildinfo
-
-# Next.js
-/.next
-
-# Git
-/.git
-.gitignore
-
-# Docker
-.dockerignore
-Dockerfile
+# OS
+.DS_Store
+Thumbs.db

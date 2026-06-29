@@ -1,45 +1,45 @@
-# Project
-/node_modules
+# Node (JavaScript/TypeScript)
+*.tsbuildinfo
+node_modules
 
 # Environment
-.env.development.local
-.env.production.local
-.env.test.local
-.env.local
 .env
+.env.*
+!.env.example
+!.env.test
+
+# Build
+build
+dist
+out
+
+# Test
+coverage
+
+# Web (Next.js)
+.next
+next-env.d.ts
 src/app/api/**/data.json
 !src/app/api/me/data.json
 
-# Log
-*.log
-/log
-/logs
-
-# Output
-/build
-/dist
-/out
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Private
+# Secrets
 *.key
+*.local.json
 *.pem
-/cert
-/certs
-/private
+cert
+certs
+private
+
+# Logs
+*.log
+logs
 
 # Temporary
 *.temp
 *.tmp
-/.temp
-/.tmp
+.temp
+.tmp
 
-# TypeScript
-*.tsbuildinfo
-
-# Next.js
-next-env.d.ts
-/.next
+# OS
+.DS_Store
+Thumbs.db

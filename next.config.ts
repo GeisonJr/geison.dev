@@ -20,7 +20,15 @@ const cspHeader = [
 ].join('; ')
 
 const nextConfig: NextConfig = {
-	output: 'standalone',
+	compiler: {
+		define: {
+			__DEV__: JSON.stringify(process.env.NODE_ENV === 'development')
+		}
+	},
+	env: {
+		// URLs
+		API_URL: process.env.API_URL,
+	},
 	eslint: {
 		ignoreDuringBuilds: true
 	},
@@ -52,7 +60,8 @@ const nextConfig: NextConfig = {
 				]
 			}
 		]
-	}
+	},
+	output: 'standalone'
 }
 
 export default nextConfig

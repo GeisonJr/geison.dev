@@ -182,7 +182,7 @@ class API {
 }
 
 function api() {
-	const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000/api/'
+	const API_URL = process.env.API_URL ?? 'http://localhost:3000/api/'
 
 	return new API(API_URL, {
 		headers: {
