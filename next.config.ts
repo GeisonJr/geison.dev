@@ -7,7 +7,7 @@ function safeSrc(key: string, values: Array<boolean | string>): string {
 		.filter((value): value is string => {
 			return typeof value === 'string'
 		})
-		.map(value => {
+		.map((value) => {
 			value = value.trim()
 
 			const quotedKeys = [
@@ -80,7 +80,8 @@ const contentSecurityPolicy = [
 		'none'
 	]),
 	'upgrade-insecure-requests'
-].join('; ')
+]
+	.join('; ')
 
 const nextConfig: NextConfig = {
 	compiler: {
