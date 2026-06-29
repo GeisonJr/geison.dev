@@ -6,12 +6,13 @@ const cspHeader = [
 	`default-src 'self'`,
 	isDev
 		? `connect-src 'self' ws:`
-		: `connect-src 'self'`,
+		: `connect-src 'self' https://cloudflareinsights.com`,
+	`font-src 'self'`,
 	`img-src 'self' data: https://cdn.discordapp.com https://gravatar.com https://*.gravatar.com`,
 	`object-src 'none'`,
 	isDev
 		? `script-src 'self' 'unsafe-inline' 'unsafe-eval'`
-		: `script-src 'self' 'unsafe-inline'`,
+		: `script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com`,
 	`style-src 'self' 'unsafe-inline'`,
 	`base-uri 'self'`,
 	`form-action 'self'`,
