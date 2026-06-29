@@ -2,18 +2,78 @@ import type { NextConfig } from 'next'
 
 const isDev = process.env.NODE_ENV === 'development'
 
+function safeSrc(key: string, values: Array<boolean | string>): string {
+	const src = values
+		.filter((value): value is string => {
+			return typeof value === 'string'
+		})
+		.map(value => {
+			value = value.trim()
+
+			const quotedKeys = [
+				'self',
+				'unsafe-eval',
+				'unsafe-inline'
+			]
+
+			if (quotedKeys.includes(value)) {
+				return `'${value}'`
+			}
+
+			return value
+		})
+		.join(' ')
+
+	return `${key} ${src}`
+}
+
+const defaultSrc = safeSrc('default-src', [
+	'self'
+])
+
+const connectSrc = safeSrc('connect-src', [
+	'self',
+	isDev && 'ws:',
+	// Cloudflare (o proxy ainda não está sendo utilizado)
+	// !isDev && 'https://cloudflareinsights.com'
+])
+
+const fontSrc = safeSrc('font-src', [
+	'self'
+])
+
+const imgSrc = safeSrc('img-src', [
+	'self',
+	'data:',
+	// Discord
+	'https://cdn.discordapp.com',
+	// Gravatar
+	'https://gravatar.com',
+	'https://secure.gravatar.com'
+])
+
+const scriptSrc = safeSrc('script-src', [
+	'self',
+	'unsafe-inline',
+	isDev && 'unsafe-eval',
+	// Cloudflare (o proxy ainda não está sendo utilizado)
+	// !isDev && 'https://static.cloudflareinsights.com'
+])
+
+const styleSrc = safeSrc('style-src', [
+	'self',
+	'unsafe-inline'
+])
+
 const contentSecurityPolicy = [
-	`default-src 'self'`,
-	isDev
-		? `connect-src 'self' ws:`
-		: `connect-src 'self' https://cloudflareinsights.com`,
-	`font-src 'self'`,
-	`img-src 'self' data: https://cdn.discordapp.com https://gravatar.com https://*.gravatar.com`,
+	defaultSrc,
+	connectSrc,
+	fontSrc,
+	imgSrc,
+	scriptSrc,
+	styleSrc,
+	`frame-src 'none'`,
 	`object-src 'none'`,
-	isDev
-		? `script-src 'self' 'unsafe-inline' 'unsafe-eval'`
-		: `script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com`,
-	`style-src 'self' 'unsafe-inline'`,
 	`base-uri 'self'`,
 	`form-action 'self'`,
 	`frame-ancestors 'none'`,
