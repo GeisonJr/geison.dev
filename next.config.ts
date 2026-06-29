@@ -67,6 +67,9 @@ const contentSecurityPolicy = [
 		'self',
 		'unsafe-inline'
 	]),
+	safeSrc('worker-src', [
+		'self'
+	]),
 	safeSrc('base-uri', [
 		'self'
 	]),
