@@ -24,7 +24,6 @@ src/app/api/**/data.json
 
 # Secrets
 *.key
-*.local.json
 *.pem
 cert
 certs
