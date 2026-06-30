@@ -4,7 +4,7 @@ import { Badge, Button, Container, Flex, Link, Map, Separator, Text } from '@/co
 import { ArrowLeftIcon, DownloadIcon, EnvelopeClosedIcon, FileTextIcon, GitHubLogoIcon, GlobeIcon, LinkedInLogoIcon, MobileIcon } from '@radix-ui/react-icons'
 import { DataList, Theme as RadixTheme, Select } from '@radix-ui/themes'
 import { useState } from 'react'
-import { cv, formatDate, formatPeriod, sortedCertifications, sortedEducation, sortedExperiences, sortedProjects } from './data'
+import { formatDate, formatPeriod, getResume, type CV, type Lang } from './data'
 import styles from './styles.module.css'
 
 function Section({ title, children }: React.PropsWithChildren<{ readonly title: string }>) {
@@ -37,7 +37,7 @@ enum Paper {
 	Letter = 'Letter'
 }
 
-function handlePrint() {
+function handlePrint(cv: CV) {
 	// Set a descriptive document title so the print/export dialog suggests
 	// "Geison Oriani - Software Engineer.pdf" — some ATS index the filename.
 	const previousTitle = document.title
@@ -67,14 +67,17 @@ function printCss(paper: Paper) {
 
 export default function Page() {
 
+	const [lang, setLang] = useState<Lang>('en')
 	const [paper, setPaper] = useState<Paper>(Paper.A4)
+
+	const { cv, labels, sortedExperiences, sortedProjects, sortedEducation, sortedCertifications } = getResume(lang)
 
 	return (
 		// Force light appearance so the printed/exported PDF is always white and
 		// high-contrast — ATS- and recruiter-friendly regardless of OS theme.
 		<RadixTheme appearance={'light'} accentColor={'green'} grayColor={'auto'} hasBackground>
 			<style dangerouslySetInnerHTML={{ __html: printCss(paper) }} />
-			<Flex direction={'column'} className={paper === Paper.Letter ? `${styles.page} ${styles.letter}` : styles.page}>
+			<Flex direction={'column'} className={[styles.page, paper === Paper.Letter && styles.letter].filter(Boolean).join(' ')}>
 				<Container p={'4'} size={'3'}>
 					<Flex direction={'column'} gap={'5'}>
 						{/* Toolbar — hidden on print */}
@@ -83,14 +86,30 @@ export default function Page() {
 								<Flex align={'center'} gap={'1'}>
 									<ArrowLeftIcon />
 									<Text>
-										{'Back'}
+										{labels.back}
 									</Text>
 								</Flex>
 							</Link>
 							<Flex align={'center'} gap={'2'} wrap={'wrap'}>
 								<Flex align={'center'} gap={'1'}>
 									<Text size={'2'} color={'gray'}>
-										{'Paper'}
+										{labels.language}
+									</Text>
+									<Select.Root value={lang} onValueChange={(value) => setLang(value as Lang)} size={'2'}>
+										<Select.Trigger variant={'soft'} />
+										<Select.Content>
+											<Select.Item value={'en'}>
+												{'English'}
+											</Select.Item>
+											<Select.Item value={'pt'}>
+												{'Português'}
+											</Select.Item>
+										</Select.Content>
+									</Select.Root>
+								</Flex>
+								<Flex align={'center'} gap={'1'}>
+									<Text size={'2'} color={'gray'}>
+										{labels.paper}
 									</Text>
 									<Select.Root value={paper} onValueChange={(value) => setPaper(value as Paper)} size={'2'}>
 										<Select.Trigger variant={'soft'} />
@@ -104,13 +123,13 @@ export default function Page() {
 										</Select.Content>
 									</Select.Root>
 								</Flex>
-								<Button onClick={handlePrint} variant={'soft'}>
+								<Button onClick={() => handlePrint(cv)} variant={'soft'}>
 									<DownloadIcon />
-									{'Download'}
+									{labels.download}
 								</Button>
-								<Button onClick={handlePrint} variant={'solid'}>
+								<Button onClick={() => handlePrint(cv)} variant={'solid'}>
 									<FileTextIcon />
-									{'Print'}
+									{labels.print}
 								</Button>
 							</Flex>
 						</Flex>
@@ -164,7 +183,7 @@ export default function Page() {
 							</header>
 						</Flex>
 
-						<Section title={'Professional Summary'}>
+						<Section title={labels.summary}>
 							<Flex pl={'3'}>
 								<Text size={'2'} color={'gray'}>
 									{cv.summary}
@@ -172,7 +191,7 @@ export default function Page() {
 							</Flex>
 						</Section>
 
-						<Section title={'Skills'}>
+						<Section title={labels.skills}>
 							<Flex pl={'3'}>
 								<DataList.Root size={'2'}>
 									<Map data={cv.skills}>
@@ -200,7 +219,7 @@ export default function Page() {
 							</Flex>
 						</Section>
 
-						<Section title={'Professional Experience'}>
+						<Section title={labels.experience}>
 							<Flex direction={'column'} gap={'3'} pl={'3'}>
 								<Map data={sortedExperiences}>
 									{(exp) => (
@@ -230,7 +249,7 @@ export default function Page() {
 																		{role.title}
 																	</Text>
 																	<Text size={'2'} color={'gray'} className={styles.date}>
-																		{formatPeriod(role.startDate, role.endDate)}
+																		{formatPeriod(role.startDate, role.endDate, lang)}
 																	</Text>
 																</Flex>
 																{role.bullets && role.bullets.length > 0 && (
@@ -253,7 +272,7 @@ export default function Page() {
 							</Flex>
 						</Section>
 
-						<Section title={'Selected Projects'}>
+						<Section title={labels.projects}>
 							<Flex direction={'column'} gap={'3'} pl={'3'}>
 								<Map data={sortedProjects}>
 									{(project) => (
@@ -270,7 +289,7 @@ export default function Page() {
 												)}
 												{project.startDate && (
 													<Text size={'2'} color={'gray'} className={styles.date}>
-														{formatPeriod(project.startDate, project.endDate ?? null)}
+														{formatPeriod(project.startDate, project.endDate ?? null, lang)}
 													</Text>
 												)}
 											</Flex>
@@ -283,7 +302,7 @@ export default function Page() {
 							</Flex>
 						</Section>
 
-						<Section title={'Education'}>
+						<Section title={labels.education}>
 							<Flex direction={'column'} gap={'3'} pl={'3'}>
 								<Map data={sortedEducation}>
 									{(edu) => (
@@ -293,7 +312,7 @@ export default function Page() {
 													{edu.school}
 												</Text>
 												<Text size={'2'} color={'gray'} className={styles.date}>
-													{formatPeriod(edu.startDate, edu.endDate)}
+													{formatPeriod(edu.startDate, edu.endDate, lang)}
 												</Text>
 											</Flex>
 											<Text size={'2'} color={'gray'}>
@@ -305,7 +324,7 @@ export default function Page() {
 							</Flex>
 						</Section>
 
-						<Section title={'Certifications'}>
+						<Section title={labels.certifications}>
 							<Flex direction={'column'} gap={'2'} pl={'3'}>
 								<Map data={sortedCertifications}>
 									{(cert) => (
@@ -325,7 +344,7 @@ export default function Page() {
 												</Text>
 											</Text>
 											<Text size={'2'} color={'gray'} className={styles.date}>
-												{formatDate(cert.date)}
+												{formatDate(cert.date, lang)}
 											</Text>
 										</Flex>
 									)}
@@ -333,17 +352,17 @@ export default function Page() {
 							</Flex>
 						</Section>
 
-						<Section title={'Languages'}>
+						<Section title={labels.languages}>
 							<Flex pl={'3'}>
 								<DataList.Root size={'2'}>
 									<Map data={cv.languages}>
-										{(lang) => (
-											<DataList.Item key={lang.label}>
+										{(language) => (
+											<DataList.Item key={language.label}>
 												<DataList.Label minWidth={'160px'}>
-													{lang.label}
+													{language.label}
 												</DataList.Label>
 												<DataList.Value>
-													{lang.level}
+													{language.level}
 												</DataList.Value>
 											</DataList.Item>
 										)}

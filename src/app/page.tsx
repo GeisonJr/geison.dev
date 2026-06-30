@@ -33,7 +33,7 @@ export default function Page() {
 							</Skeleton>
 						</Flex>
 						<Button asChild variant={'solid'} size={'3'}>
-							<Link href={'/cv'}>
+							<Link href={'/resume'}>
 								<FileTextIcon />
 								{'View Resume'}
 							</Link>

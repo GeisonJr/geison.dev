@@ -9,7 +9,7 @@
 }
 
 /* The Radix ThemePanel is a dev-only (position:fixed) debug widget; never let
-   it leak into printed/exported PDFs (e.g. the /cv page). */
+   it leak into printed/exported PDFs (e.g. the /resume page). */
 @media print {
 	.dev-only {
 		display: none !important;
