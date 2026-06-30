@@ -32,10 +32,10 @@ export default function Page() {
 								</Text>
 							</Skeleton>
 						</Flex>
-						<Button asChild variant={'soft'} size={'3'}>
+						<Button asChild variant={'solid'} size={'3'}>
 							<Link href={'/cv'}>
 								<FileTextIcon />
-								{'Currículo / CV'}
+								{'View Resume'}
 							</Link>
 						</Button>
 					</Flex>
