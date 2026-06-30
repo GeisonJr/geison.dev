@@ -8,6 +8,24 @@
 	}
 }
 
+/* The Radix ThemePanel is a dev-only (position:fixed) debug widget; never let
+   it leak into printed/exported PDFs (e.g. the /cv page). */
+@media print {
+	.dev-only {
+		display: none !important;
+	}
+
+	/* The app runs color-scheme: dark; force it light for print. The page margins,
+	   the gap between pages, and the empty area below the content all show the browser
+	   canvas backdrop, which renders black under a dark color-scheme (and wastes ink).
+	   color-scheme: light alone fixes it — every content element is already white via
+	   the CV's light theme, so no background override is needed. The @page size/margin
+	   is set inline in the CV (it depends on the chosen paper format). */
+	html {
+		color-scheme: light !important;
+	}
+}
+
 body {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;

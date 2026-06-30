@@ -1,0 +1,79 @@
+.date {
+	font-family: var(--font-mono, ui-monospace, monospace);
+	letter-spacing: -0.05em;
+}
+
+.page,
+.page * {
+	-webkit-user-select: text;
+	user-select: text;
+}
+
+/* Keep a project / certification / education block from being split across two
+   printed pages — and from leaving its heading orphaned. */
+.avoidBreak {
+	break-inside: avoid;
+}
+
+/* Experience roles MAY split across pages (a long current role with many
+   bullets would otherwise jump whole to the next page and waste half a page).
+   We only protect the heading from being left orphaned at a page bottom. */
+.role> :first-child {
+	break-after: avoid;
+}
+
+/* ATS-only mirror of badge content: kept in the PDF text layer (transparent,
+   off-flow) so parsers read comma-separated keywords instead of merged badge
+   text (e.g. "Node.jsNestJS"). Invisible and unselectable for humans. */
+.srOnly {
+	position: absolute;
+	color: transparent;
+	font-size: 1px;
+	line-height: 0;
+	user-select: none;
+	pointer-events: none;
+}
+
+@media print {
+	.toolbar {
+		display: none !important;
+	}
+
+	/* Guarantee a white, high-contrast PDF and force background/badge colors to
+	   actually print (browsers strip them by default). ATS- and recruiter-safe. */
+	.page {
+		background: #fff !important;
+		/* Tighten section/item spacing for print only by shrinking the Radix
+		   space scale for this subtree — compresses the PDF to fewer pages
+		   without touching the on-screen layout or any content. */
+		--space-3: 0.375rem;
+		--space-4: 0.4375rem;
+		--space-5: 0.625rem;
+	}
+
+	.page,
+	.page * {
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
+	}
+
+	/* Tighten bullet lists for print so multi-bullet roles stay compact. */
+	.page ul {
+		margin: 0;
+	}
+
+	.page li {
+		line-height: 1.35;
+	}
+
+	/* Letter is ~18mm shorter than A4 — tighten a touch more so it also fits 2 pages. */
+	.letter {
+		--space-3: 0.3125rem;
+		--space-4: 0.375rem;
+		--space-5: 0.5rem;
+	}
+
+	.letter li {
+		line-height: 1.3;
+	}
+}

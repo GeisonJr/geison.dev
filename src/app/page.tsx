@@ -1,7 +1,8 @@
 'use client'
 
-import { Badge, Container, Flex, If, Map, Separator, Skeleton, Text } from '@/components'
+import { Badge, Button, Container, Flex, If, Link, Map, Separator, Skeleton, Text } from '@/components'
 import { api } from '@/helpers'
+import { FileTextIcon } from '@radix-ui/react-icons'
 import { DataList } from '@radix-ui/themes'
 import useSWR from 'swr'
 import type { Attribute, Me } from './api/me/types'
@@ -18,17 +19,25 @@ export default function Page() {
 		<Flex direction={'column'}>
 			<Container p={'4'} size={'4'}>
 				<Flex direction={'column'} gap={'4'}>
-					<Flex direction={'column'} gap={'2'}>
-						<Skeleton loading={me?.name === undefined}>
-							<Text size={'8'} weight={'bold'}>
-								{me?.name ?? 'Loading...'}
-							</Text>
-						</Skeleton>
-						<Skeleton loading={me?.description === undefined}>
-							<Text size={'5'} color={'gray'}>
-								{me?.description ?? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
-							</Text>
-						</Skeleton>
+					<Flex direction={{ initial: 'column', sm: 'row' }} justify={'between'} align={{ initial: 'start', sm: 'end' }} gap={'2'}>
+						<Flex direction={'column'} gap={'2'}>
+							<Skeleton loading={me?.name === undefined}>
+								<Text size={'8'} weight={'bold'}>
+									{me?.name ?? 'Loading...'}
+								</Text>
+							</Skeleton>
+							<Skeleton loading={me?.description === undefined}>
+								<Text size={'5'} color={'gray'}>
+									{me?.description ?? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+								</Text>
+							</Skeleton>
+						</Flex>
+						<Button asChild variant={'soft'} size={'3'}>
+							<Link href={'/cv'}>
+								<FileTextIcon />
+								{'Currículo / CV'}
+							</Link>
+						</Button>
 					</Flex>
 					<Separator size={'4'} />
 					<DataList.Root size={'3'}>

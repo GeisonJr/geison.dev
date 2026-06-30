@@ -21,10 +21,12 @@ function Theme({ children }: ThemeProps) {
 			appearance={theme.scheme}
 			grayColor={'auto'}
 		>
-			<If condition={process.env.NODE_ENV === 'development'}>
-				<RadixThemePanel
-					defaultOpen={false}
-				/>
+			<If condition={__DEV__}>
+				<span className={'dev-only'}>
+					<RadixThemePanel
+						defaultOpen={false}
+					/>
+				</span>
 			</If>
 			{children}
 		</RadixTheme>
@@ -36,4 +38,3 @@ Theme.displayName = 'Theme'
 export {
 	Theme
 }
-
