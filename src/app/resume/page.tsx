@@ -91,38 +91,28 @@ export default function Page() {
 								</Flex>
 							</Link>
 							<Flex align={'center'} gap={'2'} wrap={'wrap'}>
-								<Flex align={'center'} gap={'1'}>
-									<Text size={'2'} color={'gray'}>
-										{labels.language}
-									</Text>
-									<Select.Root value={lang} onValueChange={(value) => setLang(value as Lang)} size={'2'}>
-										<Select.Trigger variant={'soft'} className={styles.control} />
-										<Select.Content>
-											<Select.Item value={'en'}>
-												{'English'}
-											</Select.Item>
-											<Select.Item value={'pt'}>
-												{'Português'}
-											</Select.Item>
-										</Select.Content>
-									</Select.Root>
-								</Flex>
-								<Flex align={'center'} gap={'1'}>
-									<Text size={'2'} color={'gray'}>
-										{labels.paper}
-									</Text>
-									<Select.Root value={paper} onValueChange={(value) => setPaper(value as Paper)} size={'2'}>
-										<Select.Trigger variant={'soft'} className={styles.control} />
-										<Select.Content>
-											<Select.Item value={'A4'}>
-												{'A4'}
-											</Select.Item>
-											<Select.Item value={'Letter'}>
-												{'Letter'}
-											</Select.Item>
-										</Select.Content>
-									</Select.Root>
-								</Flex>
+								<Select.Root value={lang} onValueChange={(value) => setLang(value as Lang)} size={'2'}>
+									<Select.Trigger variant={'soft'} className={styles.control} />
+									<Select.Content>
+										<Select.Item value={'en'}>
+											{'English'}
+										</Select.Item>
+										<Select.Item value={'pt'}>
+											{'Português'}
+										</Select.Item>
+									</Select.Content>
+								</Select.Root>
+								<Select.Root value={paper} onValueChange={(value) => setPaper(value as Paper)} size={'2'}>
+									<Select.Trigger variant={'soft'} className={styles.control} />
+									<Select.Content>
+										<Select.Item value={'A4'}>
+											{'A4'}
+										</Select.Item>
+										<Select.Item value={'Letter'}>
+											{'Letter'}
+										</Select.Item>
+									</Select.Content>
+								</Select.Root>
 								<Button onClick={() => handlePrint(cv)} variant={'soft'} className={styles.control}>
 									<DownloadIcon />
 									{labels.download}
