@@ -91,7 +91,8 @@ const nextConfig: NextConfig = {
 	},
 	env: {
 		// URLs
-		API_URL: process.env.API_URL
+		API_URL: process.env.API_URL,
+		WEB_URL: process.env.WEB_URL
 	},
 	eslint: {
 		ignoreDuringBuilds: true
