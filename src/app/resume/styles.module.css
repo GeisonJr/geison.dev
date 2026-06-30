@@ -3,6 +3,13 @@
 	letter-spacing: -0.05em;
 }
 
+/* Uniform width for the toolbar's selects and buttons, so they line up and don't
+   resize when the selected value changes (e.g. English -> Português). */
+.control {
+	justify-content: center;
+	width: 7rem;
+}
+
 .page,
 .page * {
 	-webkit-user-select: text;

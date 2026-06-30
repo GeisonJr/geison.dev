@@ -96,7 +96,7 @@ export default function Page() {
 										{labels.language}
 									</Text>
 									<Select.Root value={lang} onValueChange={(value) => setLang(value as Lang)} size={'2'}>
-										<Select.Trigger variant={'soft'} />
+										<Select.Trigger variant={'soft'} className={styles.control} />
 										<Select.Content>
 											<Select.Item value={'en'}>
 												{'English'}
@@ -112,7 +112,7 @@ export default function Page() {
 										{labels.paper}
 									</Text>
 									<Select.Root value={paper} onValueChange={(value) => setPaper(value as Paper)} size={'2'}>
-										<Select.Trigger variant={'soft'} />
+										<Select.Trigger variant={'soft'} className={styles.control} />
 										<Select.Content>
 											<Select.Item value={'A4'}>
 												{'A4'}
@@ -123,11 +123,11 @@ export default function Page() {
 										</Select.Content>
 									</Select.Root>
 								</Flex>
-								<Button onClick={() => handlePrint(cv)} variant={'soft'}>
+								<Button onClick={() => handlePrint(cv)} variant={'soft'} className={styles.control}>
 									<DownloadIcon />
 									{labels.download}
 								</Button>
-								<Button onClick={() => handlePrint(cv)} variant={'solid'}>
+								<Button onClick={() => handlePrint(cv)} variant={'solid'} className={styles.control}>
 									<FileTextIcon />
 									{labels.print}
 								</Button>

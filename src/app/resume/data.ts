@@ -103,7 +103,6 @@ const source: Resume<L> = {
 			pt: 'Piracicaba, SP, Brasil'
 		},
 		email: 'contato@geison.dev',
-		phone: '+55 19 99626-6221',
 		links: [{
 			label: 'LinkedIn',
 			href: 'https://linkedin.com/in/geisonjr'
