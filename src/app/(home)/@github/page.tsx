@@ -6,9 +6,9 @@ import { StarFilledIcon } from '@radix-ui/react-icons'
 import { Tooltip } from '@radix-ui/themes'
 import { Fragment } from 'react'
 import useSWR from 'swr'
-import { Contribution } from '../api/github/user/contributions/types'
-import type { Repo } from '../api/github/user/repos/types'
-import type { User } from '../api/github/user/types'
+import { Contribution } from '../../api/github/user/contributions/types'
+import type { Repo } from '../../api/github/user/repos/types'
+import type { User } from '../../api/github/user/types'
 
 function fetcher<T>(url: string): Promise<T> {
 	return api().get<T>(url)

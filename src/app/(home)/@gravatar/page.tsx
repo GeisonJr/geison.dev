@@ -4,7 +4,7 @@ import { Avatar, Container, Flex, If, Link, Map, Masonry, Separator, Skeleton, T
 import { api } from '@/helpers'
 import { DataList } from '@radix-ui/themes'
 import useSWR from 'swr'
-import type { Account, Data } from '../api/gravatar/profile/types'
+import type { Account, Data } from '../../api/gravatar/profile/types'
 
 function fetcher<T>(url: string): Promise<T> {
 	return api().get<T>(url)

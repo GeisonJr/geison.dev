@@ -4,7 +4,7 @@ import { Container, Flex, If, Link, Map, Masonry, Separator, Skeleton, Text } fr
 import { api } from '@/helpers'
 import { Progress } from '@radix-ui/themes'
 import useSWR from 'swr'
-import type { Data, Language } from '../api/wakatime/[range]/types'
+import type { Data, Language } from '../../api/wakatime/[range]/types'
 
 function fetcher<T>(url: string): Promise<T> {
 	return api().get<T>(url)

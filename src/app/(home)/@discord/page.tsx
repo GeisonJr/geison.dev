@@ -3,8 +3,8 @@
 import { Avatar, Badge, Container, Flex, If, Link, Map, Masonry, Separator, Skeleton, Text } from '@/components'
 import { api } from '@/helpers'
 import useSWR from 'swr'
-import { Guild } from '../api/discord/guild/types'
-import type { Member, Widget } from '../api/discord/widget/types'
+import { Guild } from '../../api/discord/guild/types'
+import type { Member, Widget } from '../../api/discord/widget/types'
 
 function fetcher<T>(url: string): Promise<T> {
 	return api().get<T>(url)

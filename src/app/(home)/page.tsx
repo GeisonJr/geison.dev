@@ -5,7 +5,7 @@ import { api } from '@/helpers'
 import { FileTextIcon } from '@radix-ui/react-icons'
 import { DataList } from '@radix-ui/themes'
 import useSWR from 'swr'
-import type { Attribute, Me } from './api/me/types'
+import type { Attribute, Me } from '../api/me/types'
 
 function fetcher<T>(url: string): Promise<T> {
 	return api().get('/' + url)
